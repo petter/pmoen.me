@@ -3,10 +3,10 @@ import { Link } from '../../components/typography/Link';
 
 export function Navigation() {
   return (
-    <nav className="flex w-full flex-row items-center justify-between bg-stone-950 px-8 py-4 text-stone-100 duration-200 ">
+    <nav className="flex w-full flex-row items-center justify-between bg-stone-950 px-8 py-4 text-stone-100">
       <NextLink
         href="/"
-        className="text-2xl font-medium lowercase tracking-tighter hover:text-fuchsia-500"
+        className="text-2xl font-medium lowercase tracking-tighter duration-200 hover:text-fuchsia-500"
       >
         Moen.
       </NextLink>
