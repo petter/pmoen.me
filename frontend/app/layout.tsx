@@ -2,6 +2,7 @@ import { Footer } from './_footer/footer';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import classNames from 'classnames';
+import { Navigation } from './_navigation/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
           'flex min-h-screen w-full max-w-full flex-col'
         )}
       >
+        <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

@@ -8,9 +8,9 @@ type HeadingProps = PropsWithChildren<{
 }>;
 
 const headingStyles: Record<HeadingLevel, string> = {
-  1: 'text-6xl font-extrabold',
-  2: 'text-4xl font-bold',
-  3: 'text-2xl font-medium',
+  1: 'text-6xl font-extrabold tracking-tighter lowercase',
+  2: 'text-4xl font-bold tracking-tight lowercase',
+  3: 'text-2xl font-medium tracking-tight lowercase',
   4: 'text-xl',
   5: 'text-lg font-light',
   6: 'text-base font-thin',
