@@ -1,3 +1,3 @@
-import {socialMediaType} from './social-media-type'
+import { socialMediaType } from './social-media-type';
 
-export const schemaTypes = [socialMediaType]
+export const schemaTypes = [socialMediaType];

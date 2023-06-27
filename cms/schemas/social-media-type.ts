@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import { defineType, defineField } from 'sanity';
 
 export const socialMediaType = defineType({
   title: 'Social Medias',
@@ -11,9 +11,9 @@ export const socialMediaType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Twitter', value: 'twitter'},
-          {title: 'GitHub', value: 'github'},
-          {title: 'LinkedIn', value: 'linkedin'},
+          { title: 'Twitter', value: 'twitter' },
+          { title: 'GitHub', value: 'github' },
+          { title: 'LinkedIn', value: 'linkedin' },
         ],
       },
     }),
@@ -23,4 +23,4 @@ export const socialMediaType = defineType({
       type: 'string',
     }),
   ],
-})
+});
