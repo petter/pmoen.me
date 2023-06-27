@@ -1,7 +1,7 @@
 import { type IconType } from 'react-icons';
 import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import { Heading } from '../_components/typography/Heading';
-import { Link } from '../_components/typography/Link';
+import { Heading } from '../../components/typography/Heading';
+import { Link } from '../../components/typography/Link';
 import { sanityClient } from '../client';
 
 type SocialMediaTypes = 'github' | 'twitter' | 'linkedin';
