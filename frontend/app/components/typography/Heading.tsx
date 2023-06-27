@@ -1,8 +1,10 @@
 import { PropsWithChildren } from 'react';
+import classNames from 'classnames';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 type HeadingProps = PropsWithChildren<{
   level: HeadingLevel;
+  className?: string;
 }>;
 
 const headingStyles: Record<HeadingLevel, string> = {
@@ -14,7 +16,11 @@ const headingStyles: Record<HeadingLevel, string> = {
   6: 'text-base font-thin',
 };
 
-export function Heading({ level, children }: HeadingProps) {
+export function Heading({ level, children, className }: HeadingProps) {
   const Component = `h${level}` as keyof JSX.IntrinsicElements;
-  return <Component className={headingStyles[level]}>{children}</Component>;
+  return (
+    <Component className={classNames(headingStyles[level], className)}>
+      {children}
+    </Component>
+  );
 }
