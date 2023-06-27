@@ -1,4 +1,4 @@
-import { Footer } from './footer';
+import { Footer } from './_footer/footer';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import classNames from 'classnames';
