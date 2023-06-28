@@ -1,23 +1,30 @@
 import { type IconType } from 'react-icons';
 import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { z, TypeOf } from 'zod';
+
 import { Heading } from '../../components/typography/heading';
 import { Link } from '../../components/typography/link';
 import { sanityClient } from '../client';
+import { baseDocumentSchema } from '../_utils/base-schema';
 
-type SocialMediaTypes = 'github' | 'twitter' | 'linkedin';
-type SocialMedia = {
-  _id: string;
-  socialMedia: SocialMediaTypes;
-  handle: string;
-};
-async function getSocials(): Promise<SocialMedia[]> {
-  return await sanityClient.fetch('*[_type == "socialMedias"]');
+export const socialMediaSchema = z.array(
+  baseDocumentSchema('socialMedias').extend({
+    socialMedia: z.enum(['github', 'linkedin', 'twitter']),
+    handle: z.string(),
+  })
+);
+
+type SocialMedia = TypeOf<typeof socialMediaSchema>[number];
+
+async function getSocials() {
+  const data = await sanityClient.fetch('*[_type == "socialMedias"]');
+  return socialMediaSchema.parse(data);
 }
 
 function getSocialLink({
   socialMedia,
   handle,
-}: Omit<SocialMedia, '_id'>): string {
+}: Pick<SocialMedia, 'socialMedia' | 'handle'>): string {
   switch (socialMedia) {
     case 'github':
       return `https://github.com/${handle}`;
@@ -28,7 +35,7 @@ function getSocialLink({
   }
 }
 
-const soMeLogo: Record<SocialMediaTypes, IconType> = {
+const soMeLogo: Record<SocialMedia['socialMedia'], IconType> = {
   github: FaGithub,
   twitter: FaTwitter,
   linkedin: FaLinkedin,
