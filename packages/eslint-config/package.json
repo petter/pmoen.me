@@ -1,0 +1,19 @@
+{
+  "name": "@pmoen/eslint-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "description": "ESLint configuration for pmoen.me",
+  "keywords": [
+    "eslint"
+  ],
+  "dependencies": {
+    "eslint-plugin-unicorn": "^47.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0 || ^8.0.0"
+  }
+}

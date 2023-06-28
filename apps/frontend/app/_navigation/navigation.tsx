@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Link } from '../../components/typography/Link';
+import { Link } from '../../components/typography/link';
 
 export function Navigation() {
   return (
