@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={classNames(
           inter.className,
-          'flex min-h-screen w-full max-w-full flex-col'
+          'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50'
         )}
       >
         <Navigation />

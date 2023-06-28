@@ -21,7 +21,7 @@ export const postType = defineType({
         source: 'title',
       },
     }),
-    imageField,
+    imageField('mainImage'),
     portableTextField,
   ],
 });
