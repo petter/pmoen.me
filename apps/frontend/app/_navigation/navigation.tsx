@@ -12,7 +12,7 @@ export function Navigation() {
       </NextLink>
 
       <div className="flex flex-row gap-4">
-        <Link href="/blog">Blog</Link>
+        <Link href="/blog">blog</Link>
       </div>
     </nav>
   );
