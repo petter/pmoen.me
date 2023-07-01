@@ -21,7 +21,7 @@ export function CaptionedSanityImage({
       >
         <SanityImage image={image} className="w-full" />
       </div>
-      <div className="bg-fuchsia-200 p-4">
+      <div className="bg-fuchsia-200 p-4 text-fuchsia-900">
         <p>{image.caption}</p>
       </div>
     </div>
