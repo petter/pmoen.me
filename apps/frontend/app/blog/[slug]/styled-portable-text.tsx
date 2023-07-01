@@ -1,4 +1,5 @@
 import { CaptionedSanityImage } from '@/components/captioned-sanity-image';
+import { CodeBlock } from '@/components/code-block';
 import { List } from '@/components/list';
 import { Heading } from '@/components/typography/heading';
 import { InlineCode } from '@/components/typography/inline-code';
@@ -30,6 +31,7 @@ export function StyledPortableText(props: StyledPortableTextProps) {
         },
         types: {
           captionedImage: ({ value }) => <CaptionedSanityImage image={value} />,
+          code: ({ value }) => <CodeBlock {...value} />,
         },
         list: {
           bullet: ({ children }) => <List type="unordered">{children}</List>,
