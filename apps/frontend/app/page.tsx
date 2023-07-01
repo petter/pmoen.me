@@ -9,9 +9,15 @@ export default function Home() {
           level={1}
           className="flex flex-col items-center text-fuchsia-300 sm:text-7xl md:text-8xl"
         >
-          <span className="w-min bg-blue-200/25 px-2">Petter</span>
-          <span className="w-min bg-blue-200/25 px-2">Sæther</span>
-          <span className="w-min bg-blue-200/25 px-2">Moen</span>
+          <span className="w-min animate-fade-up bg-blue-200/25 px-2">
+            Petter
+          </span>
+          <span className="w-min animate-fade-up bg-blue-200/25 px-2 animate-delay-500">
+            Sæther
+          </span>
+          <span className="w-min animate-fade-up bg-blue-200/25 px-2 animate-delay-1000">
+            Moen
+          </span>
         </Heading>
       </div>
     </Jumbotron>
