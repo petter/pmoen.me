@@ -5,7 +5,7 @@ import { PostPreview } from './post-preview';
 
 async function getBlogPosts() {
   const data = await sanityClient.fetch(
-    '*[_type == "post"] | order(_createdAt desc)'
+    '*[_type == "post" && dateTime(publishedAt) < dateTime(now())] | order(publishedAt desc)'
   );
   return blogPostSchema.parse(data);
 }

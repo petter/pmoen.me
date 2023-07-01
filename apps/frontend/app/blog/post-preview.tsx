@@ -21,7 +21,7 @@ export function PostPreview({ post }: PostPreviewProps) {
         />
       </div>
       <Heading level={2}>{post.title}</Heading>
-      <p>{formatDate(post._createdAt)}</p>
+      <p>{formatDate(post.publishedAt)}</p>
     </Link>
   );
 }

@@ -5,7 +5,7 @@ import { z, TypeOf } from 'zod';
 import { Heading } from '../../components/typography/heading';
 import { Link } from '../../components/typography/link';
 import { sanityClient } from '../client';
-import { baseDocumentSchema } from '../../components/utils/schemas/base-schema';
+import { baseDocumentSchema } from '../../components/utils/zod/base-schema';
 
 export const socialMediaSchema = z.array(
   baseDocumentSchema('socialMedias').extend({

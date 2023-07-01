@@ -1,9 +1,5 @@
 import { z } from 'zod';
-
-export const zDateTime = z
-  .string()
-  .datetime()
-  .transform((date) => new Date(date));
+import { zDateTime } from './date-time-literal';
 
 export function baseDocumentSchema<T extends string>(type: T) {
   return z.object({

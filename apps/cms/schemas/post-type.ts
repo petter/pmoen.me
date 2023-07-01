@@ -11,6 +11,13 @@ export const postType = defineType({
       name: 'title',
       type: 'string',
       title: 'Title',
+      validation: (Rule) => Rule.min(5),
+    }),
+    defineField({
+      name: 'publishedAt',
+      type: 'datetime',
+      title: 'Publish date',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -20,6 +27,7 @@ export const postType = defineType({
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     }),
     imageField('mainImage'),
     portableTextField,
