@@ -31,8 +31,17 @@ export const postType = defineType({
       name: 'excerpt',
       type: 'simple-portable-text',
       title: 'Excerpt',
+      validation: (Rule) => Rule.required(),
     }),
-    defineField({ name: 'mainImage', type: 'captioned-image' }),
-    defineField({ name: 'content', type: 'content' }),
+    defineField({
+      name: 'mainImage',
+      type: 'captioned-image',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'content',
+      type: 'content',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });
