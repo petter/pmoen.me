@@ -1,10 +1,10 @@
 import { Heading } from '../components/typography/heading';
-import { JumbotronBackground } from './_jumbotron/jumbotron-background';
+import { AnimatedHexagonPattern } from './_jumbotron/animated-hexagon-pattern/animated-hexagon-pattern';
 
 export default function Home() {
   return (
     <div>
-      <JumbotronBackground />
+      <AnimatedHexagonPattern width={400} height={400} hexagonRadius={20} />
       <Heading level={1}>Petter Sæther Moen</Heading>
       <Heading level={2}>Petter Sæther Moen</Heading>
       <Heading level={3}>Petter Sæther Moen</Heading>

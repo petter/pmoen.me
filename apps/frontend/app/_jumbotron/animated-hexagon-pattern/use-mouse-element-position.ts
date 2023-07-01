@@ -1,18 +1,9 @@
 import { useLayoutEffect, useState } from 'react';
 
-function getMiddlePosition(
-  element: HTMLElement | SVGElement
-): [number, number] {
-  const rect = element.getBoundingClientRect();
-  return [rect.left + rect.width / 2, rect.top + rect.height / 2];
-}
-
 export function useMouseElementPosition(
   ref: React.RefObject<HTMLElement | SVGElement>
 ) {
-  const [mousePos, setMousePos] = useState<[number, number]>(
-    ref.current ? getMiddlePosition(ref.current) : [0, 0]
-  );
+  const [mousePos, setMousePos] = useState<[number, number]>([0, 0]);
 
   useLayoutEffect(() => {
     if (ref.current) {

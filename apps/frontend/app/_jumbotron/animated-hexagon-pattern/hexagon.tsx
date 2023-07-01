@@ -10,8 +10,9 @@ export function Hexagon({
   x,
   y,
   radius,
-  stroke = 'black',
+  stroke = 'white',
   strokeWidth = 2,
+  opacity = 1,
   ...rest
 }: HexagonProps) {
   const points = [
@@ -22,19 +23,23 @@ export function Hexagon({
     [x - radius / 2, y - radius * (13 / 15)],
     [x + radius / 2, y - radius * (13 / 15)],
   ];
-  const opacityAnimationDuration = 3;
+
+  const opacityAnimationDuration = 4;
   const randomOffsetTime = useMemo(
     () => Math.random() * opacityAnimationDuration,
     []
   );
+
+  const shouldRender = Number(opacity) > 0;
   return (
     <polygon
       {...rest}
       points={points.map((point) => point.join(',')).join(' ')}
       stroke={stroke}
       strokeWidth={strokeWidth}
+      opacity={0}
     >
-      {rest.opacity && Number(rest.opacity) > 0 && (
+      {shouldRender && (
         <animate
           attributeName="opacity"
           values="0;1;0"
