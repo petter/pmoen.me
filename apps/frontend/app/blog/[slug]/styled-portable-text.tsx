@@ -1,4 +1,5 @@
 import { CaptionedSanityImage } from '@/components/captioned-sanity-image';
+import { List } from '@/components/list';
 import { Heading } from '@/components/typography/heading';
 import { Link } from '@/components/typography/link';
 import { PortableText } from '@portabletext/react';
@@ -27,6 +28,10 @@ export function StyledPortableText(props: StyledPortableTextProps) {
         },
         types: {
           captionedImage: ({ value }) => <CaptionedSanityImage image={value} />,
+        },
+        list: {
+          bullet: ({ children }) => <List type="unordered">{children}</List>,
+          number: ({ children }) => <List type="ordered">{children}</List>,
         },
       }}
     />
