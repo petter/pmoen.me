@@ -25,10 +25,7 @@ export function Hexagon({
   ];
 
   const opacityAnimationDuration = 4;
-  const randomOffsetTime = useMemo(
-    () => Math.random() * opacityAnimationDuration,
-    []
-  );
+  const randomOffsetTime = useMemo(() => Math.random() * 10, []);
 
   const shouldRender = Number(opacity) > 0;
   return (
