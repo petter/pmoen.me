@@ -16,16 +16,19 @@ export function SvgRainbowGradient(props: SvgRainbowGradientProps) {
     'rgb(95, 21, 242)',
     'rgb(186, 12, 248)',
     'rgb(251, 7, 217)',
+    'rgb(255, 0, 0)',
   ];
   return (
     <linearGradient gradientTransform="rotate(45)" {...props}>
       {colors.map((color, i) => {
-        const offset = i / colors.length;
+        const offset = i / (colors.length - 1);
+        const animateColors = arrayRotate([...colors], i);
+        animateColors.push(animateColors[0]);
         return (
           <stop key={i} offset={`${offset * 100}%`} stopColor={color}>
             <animate
               attributeName="stop-color"
-              values={arrayRotate([...colors], i).join(';')}
+              values={animateColors.join(';')}
               dur="3s"
               repeatCount="indefinite"
             />

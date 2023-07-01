@@ -1,3 +1,5 @@
+'use client';
+
 import { SVGProps, useMemo } from 'react';
 
 type HexagonProps = {
