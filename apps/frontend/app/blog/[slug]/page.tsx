@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import groq from 'groq';
+import { isAfter } from 'date-fns';
 
 import { sanityClient } from '@/app/client';
 import { blogPostItemSchema } from '../blog-post-schema';
@@ -39,9 +40,16 @@ export default async function BlogPostPage({
       <Heading level={1}>{data.title}</Heading>
       <div>
         <CaptionedSanityImage image={data.mainImage} />
-        <p className="mt-2 text-sm uppercase text-gray-600">
-          Published: <time>{formatDateTimeText(data.publishedAt)}</time>
-        </p>
+        <div className="mt-2 text-sm uppercase text-gray-600">
+          <p>
+            Published: <time>{formatDateTimeText(data.publishedAt)}</time>
+          </p>
+          {isAfter(data._updatedAt, data.publishedAt) && (
+            <p>
+              Edited: <time>{formatDateTimeText(data._updatedAt)}</time>
+            </p>
+          )}
+        </div>
       </div>
       <StyledPortableText
         value={data.content as ComponentProps<typeof PortableText>['value']}
