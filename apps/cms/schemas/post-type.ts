@@ -1,6 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { imageField } from './custom-fields/image-field';
-import { portableTextField } from './custom-fields/portable-text-field';
 
 export const postType = defineType({
   name: 'post',
@@ -29,7 +27,7 @@ export const postType = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    imageField('mainImage'),
-    portableTextField,
+    { name: 'mainImage', type: 'captioned-image' },
+    { name: 'content', type: 'content' },
   ],
 });

@@ -31,7 +31,7 @@ export function StyledPortableText(props: StyledPortableTextProps) {
             code: ({ children }) => <InlineCode>{children}</InlineCode>,
           },
           types: {
-            captionedImage: ({ value }) => (
+            'captioned-image': ({ value }) => (
               <CaptionedSanityImage image={value} />
             ),
             code: ({ value }) => <CodeBlock {...value} />,

@@ -1,5 +1,4 @@
 import { defineField } from 'sanity';
-import { imageField } from './image-field';
 
 export const portableTextField = defineField({
   name: 'content',
@@ -39,7 +38,7 @@ export const portableTextField = defineField({
         ],
       },
     },
-    imageField('captionedImage'),
+    { type: 'captioned-image' },
     {
       type: 'code',
       options: {
