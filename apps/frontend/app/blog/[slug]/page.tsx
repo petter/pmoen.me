@@ -38,6 +38,9 @@ export default async function BlogPostPage({
   return (
     <div className="flex flex-col gap-8">
       <Heading level={1}>{data.title}</Heading>
+      <StyledPortableText
+        value={data.excerpt as ComponentProps<typeof PortableText>['value']}
+      />
       <div>
         <CaptionedSanityImage image={data.mainImage} />
         <div className="mt-2 text-sm uppercase text-gray-600">

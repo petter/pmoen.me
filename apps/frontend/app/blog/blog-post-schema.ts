@@ -7,6 +7,7 @@ import { zDateTime } from '@/components/utils/zod/date-time-literal';
 export const blogPostItemSchema = baseDocumentSchema('post').extend({
   title: z.string(),
   publishedAt: zDateTime,
+  excerpt: z.array(z.unknown()),
   slug: slugSchema,
   mainImage: imageSchema,
   content: z.array(z.unknown()),

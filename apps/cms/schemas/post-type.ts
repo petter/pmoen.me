@@ -27,7 +27,12 @@ export const postType = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    { name: 'mainImage', type: 'captioned-image' },
-    { name: 'content', type: 'content' },
+    defineField({
+      name: 'excerpt',
+      type: 'simple-portable-text',
+      title: 'Excerpt',
+    }),
+    defineField({ name: 'mainImage', type: 'captioned-image' }),
+    defineField({ name: 'content', type: 'content' }),
   ],
 });
