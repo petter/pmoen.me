@@ -73,7 +73,6 @@ export function CodeBlock(props: CodeBlockProps) {
         style={oneDark}
         language={language}
         showLineNumbers
-        wrapLongLines
         customStyle={{ margin: 0 }}
       >
         {code}
