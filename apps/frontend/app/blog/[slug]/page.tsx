@@ -1,3 +1,4 @@
+import { ComponentProps } from 'react';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import groq from 'groq';
@@ -5,11 +6,9 @@ import groq from 'groq';
 import { sanityClient } from '@/app/client';
 import { blogPostItemSchema } from '../blog-post-schema';
 import { Heading } from '@/components/typography/heading';
-import { SanityImage } from '@/components/sanity-image';
-import { ComponentProps } from 'react';
-import { Link } from '@/components/typography/link';
 import { StyledPortableText } from './styled-portable-text';
 import { CaptionedSanityImage } from '@/components/captioned-sanity-image';
+import { formatDateTimeText } from '@/components/utils/date-formatting';
 
 async function getBlogPost(slug: string) {
   const blogPostItemQuery = groq`*[
@@ -38,7 +37,12 @@ export default async function BlogPostPage({
   return (
     <div className="flex flex-col gap-8">
       <Heading level={1}>{data.title}</Heading>
-      <CaptionedSanityImage image={data.mainImage} />
+      <div>
+        <CaptionedSanityImage image={data.mainImage} />
+        <p className="mt-2 text-sm uppercase text-gray-600">
+          Published: <time>{formatDateTimeText(data.publishedAt)}</time>
+        </p>
+      </div>
       <StyledPortableText
         value={data.content as ComponentProps<typeof PortableText>['value']}
       />
