@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { SVGProps, useMemo } from 'react';
 import { Hexagon } from './hexagon';
 import { SvgRainbowGradient } from './svg-rainbow-gradient';
 
@@ -8,12 +8,13 @@ type AnimatedHexagonPatternProps = {
   width: number;
   height: number;
   hexagonRadius: number;
-};
+} & Omit<SVGProps<SVGSVGElement>, 'viewBox' | 'width' | 'height'>;
 
 export function AnimatedHexagonPattern({
   width,
   height,
   hexagonRadius,
+  ...rest
 }: AnimatedHexagonPatternProps) {
   const points = useMemo(() => {
     return generatePoints(width, height, hexagonRadius);
@@ -21,6 +22,7 @@ export function AnimatedHexagonPattern({
 
   return (
     <svg
+      {...rest}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
