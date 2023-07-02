@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "deploy": "turbo run deploy",
+    "deploy:cms": "turbo run deploy --filter @pmoen/cms",
     "lint": "turbo run lint",
     "fix:prettier": "prettier --write ."
   },
