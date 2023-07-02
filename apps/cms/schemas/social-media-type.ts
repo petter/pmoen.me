@@ -14,6 +14,7 @@ export const socialMediaType = defineType({
           { title: 'Twitter', value: 'twitter' },
           { title: 'GitHub', value: 'github' },
           { title: 'LinkedIn', value: 'linkedin' },
+          { title: 'Email', value: 'email' },
         ],
       },
     }),

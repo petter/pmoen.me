@@ -1,5 +1,5 @@
 import { type IconType } from 'react-icons';
-import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { z, TypeOf } from 'zod';
 
 import { Heading } from '../../components/typography/heading';
@@ -9,7 +9,7 @@ import { baseDocumentSchema } from '../../components/utils/zod/base-schema';
 
 export const socialMediaSchema = z.array(
   baseDocumentSchema('socialMedias').extend({
-    socialMedia: z.enum(['github', 'linkedin', 'twitter']),
+    socialMedia: z.enum(['github', 'linkedin', 'twitter', 'email']),
     handle: z.string(),
   })
 );
@@ -32,6 +32,8 @@ function getSocialLink({
       return `https://twitter.com/${handle}`;
     case 'linkedin':
       return `https://linkedin.com/in/${handle}`;
+    case 'email':
+      return `mailto:${handle}`;
   }
 }
 
@@ -39,10 +41,21 @@ const soMeLogo: Record<SocialMedia['socialMedia'], IconType> = {
   github: FaGithub,
   twitter: FaTwitter,
   linkedin: FaLinkedin,
+  email: FaEnvelope,
 };
 
 export async function Socials() {
   const socials = await getSocials();
+
+  const sorting: SocialMedia['socialMedia'][] = [
+    'github',
+    'twitter',
+    'linkedin',
+    'email',
+  ];
+  const socialsSorted = [...socials].sort(
+    (a, b) => sorting.indexOf(a.socialMedia) - sorting.indexOf(b.socialMedia)
+  );
 
   return (
     <div className="p-4">
@@ -50,13 +63,14 @@ export async function Socials() {
         Socials
       </Heading>
       <ul className="flex flex-col gap-2 pl-2">
-        {socials.map(({ _id, socialMedia, handle }) => {
+        {socialsSorted.map(({ _id, socialMedia, handle }) => {
           const Logo = soMeLogo[socialMedia];
           return (
             <li key={_id} className="flex w-max flex-row items-center gap-2">
               <Logo size="1.5em" />
               <Link href={getSocialLink({ handle, socialMedia })}>
-                @{handle}
+                {socialMedia !== 'email' && '@'}
+                {handle}
               </Link>
             </li>
           );
