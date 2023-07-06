@@ -1,8 +1,9 @@
-import { Footer } from './_footer/footer';
-import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 import classNames from 'classnames';
 import { Navigation } from './_navigation/navigation';
+import { Footer } from './_footer/footer';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
