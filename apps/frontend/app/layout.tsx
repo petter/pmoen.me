@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import classNames from 'classnames';
 import { Navigation } from './_navigation/navigation';
@@ -22,13 +23,14 @@ export default function RootLayout({
       <body
         className={classNames(
           inter.className,
-          'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50'
+          'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50',
         )}
       >
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
