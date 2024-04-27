@@ -1,21 +1,38 @@
 {
-  "name": "@pmoen/blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@pmoen/frontend",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "deploy:cms": "turbo run deploy --filter @pmoen/cms",
-    "lint": "turbo run lint",
-    "fix:prettier": "prettier --write ."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier:fix": "prettier --write ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@types/node": "20.12.7",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
+    "autoprefixer": "10.4.19",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "next": "14.2.3",
+    "postcss": "8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "turbo": "^1.12.4"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-icons": "^5.1.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "3.4.3",
+    "tailwindcss-animated": "^1.0.1",
+    "typescript": "5.4.5",
+    "zod": "^3.23.4"
   }
 }

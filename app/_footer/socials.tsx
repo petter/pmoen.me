@@ -1,30 +1,35 @@
 import { type IconType } from 'react-icons';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { z, TypeOf } from 'zod';
 
 import { Heading } from '../../components/typography/heading';
 import { Link } from '../../components/typography/link';
-import { sanityClient } from '../client';
-import { baseDocumentSchema } from '../../components/utils/zod/base-schema';
 
-export const socialMediaSchema = z.array(
-  baseDocumentSchema('socialMedias').extend({
-    socialMedia: z.enum(['github', 'linkedin', 'twitter', 'email']),
-    handle: z.string(),
-  })
-);
-
-type SocialMedia = TypeOf<typeof socialMediaSchema>[number];
-
-async function getSocials() {
-  const data = await sanityClient.fetch('*[_type == "socialMedias"]');
-  return socialMediaSchema.parse(data);
+interface SocialMedia {
+  socialMedia: 'github' | 'twitter' | 'linkedin' | 'email';
+  handle: string;
+}
+function getSocials() {
+  return [
+    {
+      handle: 'petter',
+      socialMedia: 'github',
+    },
+    {
+      handle: 'pettersmoen',
+      socialMedia: 'twitter',
+    },
+    {
+      handle: 'pettersmoen',
+      socialMedia: 'linkedin',
+    },
+    {
+      handle: 'pettersmoen@gmail.com',
+      socialMedia: 'email',
+    },
+  ] as Array<SocialMedia>;
 }
 
-function getSocialLink({
-  socialMedia,
-  handle,
-}: Pick<SocialMedia, 'socialMedia' | 'handle'>): string {
+function getSocialLink({ socialMedia, handle }: SocialMedia): string {
   switch (socialMedia) {
     case 'github':
       return `https://github.com/${handle}`;
@@ -54,7 +59,7 @@ export async function Socials() {
     'email',
   ];
   const socialsSorted = [...socials].sort(
-    (a, b) => sorting.indexOf(a.socialMedia) - sorting.indexOf(b.socialMedia)
+    (a, b) => sorting.indexOf(a.socialMedia) - sorting.indexOf(b.socialMedia),
   );
 
   return (
@@ -63,10 +68,13 @@ export async function Socials() {
         Socials
       </Heading>
       <ul className="flex flex-col gap-2 pl-2">
-        {socialsSorted.map(({ _id, socialMedia, handle }) => {
+        {socialsSorted.map(({ socialMedia, handle }) => {
           const Logo = soMeLogo[socialMedia];
           return (
-            <li key={_id} className="flex w-max flex-row items-center gap-2">
+            <li
+              key={socialMedia}
+              className="flex w-max flex-row items-center gap-2"
+            >
               <Logo size="1.5em" />
               <Link href={getSocialLink({ handle, socialMedia })}>
                 {socialMedia !== 'email' && '@'}

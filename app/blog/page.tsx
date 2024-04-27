@@ -1,15 +1,9 @@
-import groq from 'groq';
-
 import { Heading } from '../../components/typography/heading';
-import { sanityClient } from '../client';
-import { blogPostsSchema } from './blog-post-schema';
 import { PostPreview } from './post-preview';
 
 async function getBlogPosts() {
-  const data = await sanityClient.fetch(
-    groq`*[_type == "post" && dateTime(publishedAt) < dateTime(now())] | order(publishedAt desc)`
-  );
-  return blogPostsSchema.parse(data);
+  // TODO
+  return undefined
 }
 
 export default async function BlogPage() {
@@ -20,11 +14,11 @@ export default async function BlogPage() {
         Blog
       </Heading>
       <ul className="flex flex-col gap-10">
-        {data.map((post) => (
+        {/* {data.map((post) => (
           <li key={post._id}>
             <PostPreview post={post} />
           </li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );

@@ -1,7 +1,5 @@
 import {
-  ComponentProps,
   ComponentPropsWithoutRef,
-  ReactElement,
   forwardRef,
 } from 'react';
 import { twMerge } from 'tailwind-merge';
