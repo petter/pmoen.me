@@ -24,10 +24,11 @@ export default function RootLayout({
         className={classNames(
           inter.className,
           'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50',
+          '[--min-footer-height:17rem] [--min-nav-height:4rem]',
         )}
       >
         <Navigation />
-        <main className="flex-1">{children}</main>
+        <main className="w-full flex-1">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
