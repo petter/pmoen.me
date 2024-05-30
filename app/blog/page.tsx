@@ -1,10 +1,6 @@
 import { Heading } from '../../components/typography/heading';
 import { PostPreview } from './post-preview';
-
-async function getBlogPosts() {
-  // TODO
-  return undefined
-}
+import { getBlogPosts } from './posts';
 
 export default async function BlogPage() {
   const data = await getBlogPosts();
@@ -14,11 +10,11 @@ export default async function BlogPage() {
         Blog
       </Heading>
       <ul className="flex flex-col gap-10">
-        {/* {data.map((post) => (
-          <li key={post._id}>
+        {data.map((post) => (
+          <li key={post.slug}>
             <PostPreview post={post} />
           </li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );
