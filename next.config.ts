@@ -4,7 +4,8 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   pageExtensions: ['tsx', 'mdx'],
   experimental: {
-    reactCompiler: true
+    reactCompiler: true,
+    ppr: true
   },
   rewrites: async () => {
     return [
