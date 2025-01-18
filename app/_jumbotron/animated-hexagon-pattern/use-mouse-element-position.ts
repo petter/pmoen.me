@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 
 export function useMouseElementPosition(
-  ref: React.RefObject<HTMLElement | SVGElement>
+  ref: React.RefObject<HTMLElement | SVGElement>,
 ) {
   const [mousePos, setMousePos] = useState<[number, number]>([0, 0]);
 

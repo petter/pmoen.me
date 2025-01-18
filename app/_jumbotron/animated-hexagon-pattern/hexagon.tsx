@@ -1,6 +1,6 @@
 'use client';
 
-import { SVGProps, useMemo } from 'react';
+import { type SVGProps, useMemo } from 'react';
 
 type HexagonProps = {
   x: number;
@@ -40,6 +40,7 @@ export function Hexagon({
     >
       {shouldRender && (
         <animate
+          suppressHydrationWarning
           attributeName="opacity"
           values="0;1;0"
           begin={`${randomOffsetTime}s`}

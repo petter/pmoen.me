@@ -7,7 +7,7 @@ export function Link({ className, ...rest }: ComponentProps<typeof NextLink>) {
     <NextLink
       className={twMerge(
         'border-b-2 border-current duration-200 hover:text-fuchsia-500',
-        className
+        className,
       )}
       {...rest}
     />

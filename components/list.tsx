@@ -1,7 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  forwardRef,
-} from 'react';
+import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type ListProps = { type: 'ordered' | 'unordered' } & ComponentPropsWithoutRef<
@@ -18,7 +15,7 @@ export const List = forwardRef<HTMLOListElement, ListProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 List.displayName = 'List';

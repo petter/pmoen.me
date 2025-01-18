@@ -1,6 +1,6 @@
 'use client';
 
-import { SVGProps, useMemo } from 'react';
+import { type SVGProps, useMemo } from 'react';
 import { Hexagon } from './hexagon';
 import { SvgRainbowGradient } from './svg-rainbow-gradient';
 
@@ -51,7 +51,7 @@ export function AnimatedHexagonPattern({
 function generatePoints(
   width: number,
   height: number,
-  hexagonRadius: number
+  hexagonRadius: number,
 ): (readonly [number, number])[] {
   const res = [];
 
@@ -71,9 +71,9 @@ function generatePoints(
 
 function getDistance(
   vector1: readonly [number, number],
-  vector2: readonly [number, number]
+  vector2: readonly [number, number],
 ) {
   const [x1, y1] = vector1;
   const [x2, y2] = vector2;
-  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }

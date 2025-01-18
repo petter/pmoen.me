@@ -11,7 +11,7 @@ export const InlineCode = forwardRef<
       ref={ref}
       className={twMerge(
         'rounded-md bg-fuchsia-200 px-2 py-1 text-fuchsia-900',
-        className
+        className,
       )}
     />
   );
