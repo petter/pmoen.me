@@ -24,7 +24,7 @@ export default function RootLayout({
         className={classNames(
           inter.className,
           'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50',
-          '[--min-footer-height:17rem] [--min-nav-height:4rem]',
+          '[--min-footer-height:19.125rem] [--min-nav-height:4rem]',
         )}
       >
         <Navigation />

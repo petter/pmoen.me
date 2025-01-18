@@ -3,7 +3,7 @@ import { Link } from '../../components/typography/link';
 
 export function Navigation() {
   return (
-    <nav className="sticky top-0 flex w-full flex-row items-center justify-between bg-stone-950 px-8 py-4 text-stone-100">
+    <nav className="sticky top-0 z-20 flex w-full flex-row items-center justify-between bg-stone-950 px-8 py-4 text-stone-100">
       <NextLink
         href="/"
         className="text-2xl font-medium lowercase tracking-tighter duration-200 hover:text-fuchsia-500"
