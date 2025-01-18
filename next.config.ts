@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   pageExtensions: ['tsx', 'mdx'],
   experimental: {
     reactCompiler: true,
-    ppr: true
   },
   rewrites: async () => {
     return [
