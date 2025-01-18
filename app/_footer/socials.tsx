@@ -1,17 +1,17 @@
 import type { IconType } from 'react-icons';
 import {
   FaGithub,
-  FaTwitter,
   FaLinkedin,
   FaEnvelope,
   FaBluesky,
+  FaXTwitter,
 } from 'react-icons/fa6';
 
 import { Heading } from '../../components/typography/heading';
 import { Link } from '../../components/typography/link';
 
 interface SocialMedia {
-  socialMedia: 'github' | 'twitter' | 'linkedin' | 'email' | 'bluesky';
+  socialMedia: 'github' | 'x' | 'linkedin' | 'email' | 'bluesky';
   handle: string;
 }
 function getSocials() {
@@ -22,7 +22,7 @@ function getSocials() {
     },
     {
       handle: 'pettersmoen',
-      socialMedia: 'twitter',
+      socialMedia: 'x',
     },
     {
       handle: 'pmoen.me',
@@ -36,14 +36,14 @@ function getSocials() {
       handle: 'pettersmoen@gmail.com',
       socialMedia: 'email',
     },
-  ] as Array<SocialMedia>;
+  ] satisfies Array<SocialMedia>;
 }
 
 function getSocialLink({ socialMedia, handle }: SocialMedia): string {
   switch (socialMedia) {
     case 'github':
       return `https://github.com/${handle}`;
-    case 'twitter':
+    case 'x':
       return `https://twitter.com/${handle}`;
     case 'linkedin':
       return `https://linkedin.com/in/${handle}`;
@@ -56,7 +56,7 @@ function getSocialLink({ socialMedia, handle }: SocialMedia): string {
 
 const soMeLogo: Record<SocialMedia['socialMedia'], IconType> = {
   github: FaGithub,
-  twitter: FaTwitter,
+  x: FaXTwitter,
   linkedin: FaLinkedin,
   email: FaEnvelope,
   bluesky: FaBluesky,
@@ -68,7 +68,7 @@ export async function Socials() {
   const sorting: SocialMedia['socialMedia'][] = [
     'github',
     'bluesky',
-    'twitter',
+    'x',
     'linkedin',
     'email',
   ];
