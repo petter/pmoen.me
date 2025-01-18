@@ -22,6 +22,7 @@
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "autoprefixer": "10.4.20",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "eslint": "^9.18.0",

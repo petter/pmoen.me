@@ -1,8 +1,11 @@
 import withMDX from '@next/mdx';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ['tsx', 'mdx'],
+  experimental: {
+    reactCompiler: true
+  },
   rewrites: async () => {
     return [
       {
