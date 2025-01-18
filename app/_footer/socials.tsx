@@ -44,7 +44,7 @@ function getSocialLink({ socialMedia, handle }: SocialMedia): string {
     case 'github':
       return `https://github.com/${handle}`;
     case 'x':
-      return `https://twitter.com/${handle}`;
+      return `https://x.com/${handle}`;
     case 'linkedin':
       return `https://linkedin.com/in/${handle}`;
     case 'bluesky':
