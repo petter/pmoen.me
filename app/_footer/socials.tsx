@@ -90,7 +90,10 @@ export async function Socials() {
               className="flex w-max flex-row items-center gap-2"
             >
               <Logo size="1.5em" />
-              <Link href={getSocialLink({ handle, socialMedia })}>
+              <Link
+                href={getSocialLink({ handle, socialMedia })}
+                target="_blank"
+              >
                 {socialMedia !== 'email' && '@'}
                 {handle}
               </Link>
