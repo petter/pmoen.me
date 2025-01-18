@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { JSX, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
