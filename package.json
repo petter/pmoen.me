@@ -40,5 +40,15 @@
     "tailwindcss-animated": "^1.1.2",
     "typescript": "5.7.3",
     "zod": "^3.24.1"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "bun",
+      "onFail": "error"
+    }
   }
 }
