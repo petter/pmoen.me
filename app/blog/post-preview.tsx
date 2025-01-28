@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Heading } from '../../components/typography/heading';
 import { Link } from '../../components/typography/link';
 import { formatDateTimeText } from '../../components/utils/date-formatting';
