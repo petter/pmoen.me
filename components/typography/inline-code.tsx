@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export const InlineCode = forwardRef<
