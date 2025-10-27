@@ -39,16 +39,6 @@
     "typescript": "5.8.3",
     "zod": "^3.25.67"
   },
-  "devEngines": {
-    "runtime": {
-      "name": "bun",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "bun",
-      "onFail": "error"
-    }
-  },
   "trustedDependencies": [
     "@vercel/speed-insights"
   ],
