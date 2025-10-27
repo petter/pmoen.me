@@ -3,16 +3,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['tsx', 'mdx'],
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
   rewrites: async () => {
-    return [
-      {
-        source: '/drone',
-        destination: '/drone/UserCertificate.pdf',
-      },
-    ];
+    return [{ source: '/drone', destination: '/drone/UserCertificate.pdf' }];
   },
 };
 
