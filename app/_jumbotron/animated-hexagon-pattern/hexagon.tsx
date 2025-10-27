@@ -27,7 +27,18 @@ export function Hexagon({
   ];
 
   const opacityAnimationDuration = 4;
-  const randomOffsetTime = useMemo(() => Math.random() * 10, []);
+  const randomOffsetTime = useMemo(() => {
+    // Deterministically stagger animation timings so cache-sensitive renders stay stable.
+    const key = `${x}-${y}-${radius}`;
+    let hash = 0;
+    for (let index = 0; index < key.length; index++) {
+      hash = (hash << 5) - hash + key.charCodeAt(index);
+      hash |= 0;
+    }
+
+    const normalized = Math.abs(hash % 1000) / 1000;
+    return normalized * 10;
+  }, [radius, x, y]);
 
   const shouldRender = Number(opacity) > 0;
   return (
