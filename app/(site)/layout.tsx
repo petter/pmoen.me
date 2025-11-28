@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NavLink } from './nav-link';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,28 +23,13 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <nav>
           <ul className="flex gap-6 text-sm tracking-wide uppercase">
             <li>
-              <Link
-                href="/blog"
-                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              >
-                Blog
-              </Link>
+              <NavLink href="/blog">Blog</NavLink>
             </li>
             <li>
-              <Link
-                href="/talks"
-                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              >
-                Talks
-              </Link>
+              <NavLink href="/talks">Talks</NavLink>
             </li>
             <li>
-              <Link
-                href="/products"
-                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              >
-                Products
-              </Link>
+              <NavLink href="/products">Products</NavLink>
             </li>
             <li>
               <a
