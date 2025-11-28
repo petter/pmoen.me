@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { NavLink } from './nav-link';
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function SiteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex min-h-screen w-full flex-col bg-stone-950 text-stone-100">
       {/* Subtle grain texture overlay */}
@@ -20,7 +24,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         >
           ← Home
         </Link>
-        <nav>
+        <nav className="hidden sm:block">
           <ul className="flex gap-6 text-sm tracking-wide uppercase">
             <li>
               <NavLink href="/blog">Blog</NavLink>

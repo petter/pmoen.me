@@ -23,4 +23,3 @@ export function NavLink({ href, children }: NavLinkProps) {
     </Link>
   );
 }
-
