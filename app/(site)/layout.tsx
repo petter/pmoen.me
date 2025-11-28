@@ -11,14 +11,52 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         }}
       />
 
-      {/* Minimal header */}
-      <header className="relative px-8 py-8 md:px-16 lg:px-24">
+      {/* Header with navigation */}
+      <header className="relative flex items-center justify-between px-8 py-8 md:px-16 lg:px-24">
         <Link
           href="/"
           className="text-sm tracking-wide text-stone-500 uppercase transition-colors duration-200 hover:text-stone-50"
         >
-          ← Back
+          ← Home
         </Link>
+        <nav>
+          <ul className="flex gap-6 text-sm tracking-wide uppercase">
+            <li>
+              <Link
+                href="/blog"
+                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/talks"
+                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
+              >
+                Talks
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/products"
+                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
+              >
+                Products
+              </Link>
+            </li>
+            <li>
+              <a
+                href="https://cv.pmoen.me"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
+              >
+                CV
+              </a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
       {/* Main content */}
