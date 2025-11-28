@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Cormorant_Garamond, Geist } from 'next/font/google';
+import { Pacifico, Geist } from 'next/font/google';
 import classNames from 'classnames';
 import './globals.css';
 
@@ -9,15 +9,16 @@ const geist = Geist({
   variable: '--font-geist',
 });
 
-const cormorant = Cormorant_Garamond({
+const pacifico = Pacifico({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['400'],
+  variable: '--font-pacifico',
 });
 
 export const metadata = {
   title: 'Petter Moen',
-  description: 'Software Engineer based in Toronto. Passionate about product development, frontend technology, and AI.',
+  description:
+    'Software Engineer based in Toronto. Passionate about product development, frontend technology, and AI.',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body
         className={classNames(
           geist.variable,
-          cormorant.variable,
+          pacifico.variable,
           'font-sans antialiased',
         )}
       >

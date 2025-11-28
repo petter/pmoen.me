@@ -15,7 +15,7 @@ export default function Home() {
       <main className="relative flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
         <div className="max-w-3xl">
           {/* Name */}
-          <h1 className="animate-fade-up font-serif text-5xl font-light tracking-tight text-stone-50 sm:text-6xl md:text-7xl">
+          <h1 className="animate-fade-up font-serif text-4xl font-light tracking-tight text-stone-50 sm:text-5xl md:text-6xl">
             Petter Sæther Moen
           </h1>
 

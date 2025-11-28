@@ -2,9 +2,9 @@
 
 @plugin 'tailwindcss-animated';
 
-@theme {
+body {
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-serif: var(--font-pacifico), ui-serif, Georgia, serif;
 }
 
 /*
