@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaBluesky, FaXTwitter } from 'react-icons/fa6';
 import { GrainOverlay } from '@/components/grain-overlay';
+import { CurrentlyWorkingOn } from './currently-working-on';
 
 export default function Home() {
   return (
@@ -19,8 +20,11 @@ export default function Home() {
             Software Engineer
           </p>
 
+          {/* Currently working on */}
+          <CurrentlyWorkingOn />
+
           {/* Bio */}
-          <div className="animate-fade-up animate-delay-200 mt-8 max-w-xl space-y-4 text-stone-400">
+          <div className="animate-fade-up animate-delay-300 mt-10 max-w-xl space-y-4 text-stone-400">
             <p>M.Sc. from University of Oslo. Based in Toronto, Canada.</p>
             <p>
               Passionate about product development, frontend technology, and AI.
@@ -28,7 +32,7 @@ export default function Home() {
           </div>
 
           {/* Navigation */}
-          <nav className="animate-fade-up animate-delay-300 mt-16">
+          <nav className="animate-fade-up animate-delay-[400ms] mt-16">
             <ul className="flex flex-wrap gap-x-8 gap-y-4 text-sm tracking-wide uppercase">
               <li>
                 <Link
@@ -68,7 +72,7 @@ export default function Home() {
           </nav>
 
           {/* Social links */}
-          <div className="animate-fade-up animate-delay-500 mt-16 flex gap-6">
+          <div className="animate-fade-up animate-delay-[500ms] mt-16 flex gap-6">
             <a
               href="https://github.com/petter"
               target="_blank"
