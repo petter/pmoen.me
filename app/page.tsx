@@ -32,7 +32,7 @@ export default function Home() {
           </div>
 
           {/* Navigation */}
-          <nav className="animate-fade-up animate-delay-[400ms] mt-16">
+          <nav className="animate-fade-up animate-delay-400ms] mt-16">
             <ul className="flex flex-wrap gap-x-8 gap-y-4 text-sm tracking-wide uppercase">
               <li>
                 <Link
@@ -72,7 +72,7 @@ export default function Home() {
           </nav>
 
           {/* Social links */}
-          <div className="animate-fade-up animate-delay-[500ms] mt-16 flex gap-6">
+          <div className="animate-fade-up animate-delay-500 mt-16 flex gap-6">
             <a
               href="https://github.com/petter"
               target="_blank"
