@@ -97,4 +97,12 @@ export const externalPosts: Array<ExternalPost> = [
     imageUrl:
       'https://image-www.kode24.no/226901.jpg?imageId=226901&x=0&y=19.230769230769&cropw=100&croph=41.880341880342&panox=0&panoy=19.230769230769&panow=100&panoh=41.880341880342&width=1200&height=683',
   },
+  {
+    slug: 'kode24-sveltes-remote-function-ser-magisk-lett-ut',
+    title: 'Sveltes remote function: - Ser magisk lett ut!',
+    publishDate: '2025-11-21T07:49:00.000Z',
+    url: 'https://www.kode24.no/artikkel/sveltes-remote-function-ser-magisk-lett-ut/249756',
+    imageUrl:
+      'https://image-www.kode24.no/249772.webp?imageId=249772&x=0.00&y=37.12&cropw=100.00&croph=45.30&width=1972&height=1342&format=webp',
+  },
 ];
