@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache';
 import { z } from 'zod';
 
 const GitHubPushEventSchema = z.object({
@@ -39,6 +40,9 @@ export interface LatestCommit {
 }
 
 export async function getLatestCommit(): Promise<LatestCommit | null> {
+  'use cache';
+  cacheLife('minutes');
+
   const token = process.env.GITHUB_PAT;
   const username = process.env.GITHUB_USERNAME ?? 'petter';
 
@@ -56,7 +60,6 @@ export async function getLatestCommit(): Promise<LatestCommit | null> {
           Accept: 'application/vnd.github+json',
           'X-GitHub-Api-Version': '2022-11-28',
         },
-        next: { revalidate: 300 }, // Revalidate every 5 minutes
       },
     );
 
@@ -108,7 +111,6 @@ export async function getLatestCommit(): Promise<LatestCommit | null> {
             Accept: 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28',
           },
-          next: { revalidate: 300 },
         },
       );
 
