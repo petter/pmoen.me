@@ -11,38 +11,39 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^16.0.0",
-    "@tailwindcss/postcss": "^4.1.10",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.0.5",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/mdx": "^2.0.13",
-    "@types/node": "24.0.3",
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "next": "^16.0.0",
+    "next": "^16.0.5",
     "postcss": "8.5.6",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.13",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "prettier": "^3.7.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-icons": "^5.5.0",
-    "react-syntax-highlighter": "^15.6.1",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.10",
+    "react-syntax-highlighter": "^16.1.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17",
     "tailwindcss-animated": "^2.0.0",
-    "typescript": "5.8.3",
-    "zod": "^3.25.67"
+    "typescript": "5.9.3",
+    "zod": "^4.1.13"
   },
   "trustedDependencies": [
     "@vercel/speed-insights"
   ],
   "devDependencies": {
-    "oxlint": "^1.2.0"
+    "baseline-browser-mapping": "^2.8.32",
+    "oxlint": "^1.30.0"
   }
 }
