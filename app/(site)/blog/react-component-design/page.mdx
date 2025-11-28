@@ -1,0 +1,55 @@
+export const metadata = {
+  // publishDate: '2024-06-01',
+  title: 'React Component Design',
+};
+
+# {metadata.title}
+
+## use event driven props
+
+### Don't
+
+```tsx
+const [isOpen, setOpen] = useState(initialState);
+
+<Modal setOpen={setOpen} />
+```
+
+Hard to tell when the opening state is changing.
+
+### Do
+
+```tsx
+const [isOpen, setOpen] = useState(initialState);
+
+<Modal
+  onOpen={() => setOpen(true)}
+  onClose={() => setOpen(false)}
+/>
+```
+
+In control of your components state. We have full control over when our open state is changing.
+
+## boolean props should default to false
+
+A common pattern in component design is to have boolean props that either enable or disable some functionality.
+This is a pattern I really enjoy.
+It makes it easy to not only maintain a component with slight variations in usage, but also eases the use.
+It would be painful for a component consumer to need to juggle between two different components for a normal button and a loading button component for instance.
+
+However, a common pit fall when designing components with boolean props is that the default value of the boolean prop is set to true.
+As a consumer of a component you don't necessarily have easy access to the default values of its props.
+
+{/* Would be nice with a citation on what default values people expect */}
+
+### Don't
+
+```tsx
+<>
+```
+
+### Do
+
+```tsx
+<>
+```

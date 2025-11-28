@@ -1,0 +1,105 @@
+# How React Server Functions Work
+
+## Bundling
+
+```tsx
+"use server";
+
+export async function getUser() {
+  return {
+    name: "Petter Sæther Moen",
+    bluesky: '@pmoen.me',
+    x: '@pettersmoen',
+  };
+}
+```
+
+The request doesn't need to go to a predefined route. It only needs the action id.
+
+action id is calculated as a SHA1 hash of the function name, file path and a hash salt
+
+```tsx
+// Prepend an extra byte to the ID, with the following format:
+// 0     000000    0
+// ^type ^arg mask ^rest args
+//
+// The type bit represents if the action is a cache function or not.
+// For cache functions, the type bit is set to 1. Otherwise, it's 0.
+//
+// The arg mask bit is used to determine which arguments are used by
+// the function itself, up to 6 arguments. The bit is set to 1 if the
+// argument is used, or being spread or destructured (so it can be
+// indirectly or partially used). The bit is set to 0 otherwise.
+//
+// The rest args bit is used to determine if there's a ...rest argument
+// in the function signature. If there is, the bit is set to 1.
+//
+//  For example:
+//
+//   async function foo(a, foo, b, bar, ...baz) {
+//     'use cache';
+//     return a + b;
+//   }
+//
+// will have it encoded as [1][101011][1]. The first bit is set to 1
+// because it's a cache function. The second part has 1010 because the
+// only arguments used are `a` and `b`. The subsequent 11 bits are set
+// to 1 because there's a ...rest argument starting from the 5th. The
+// last bit is set to 1 as well for the same reason.
+```
+
+### Client
+
+Fra claude:
+
+```ts
+import { createServerReference, callServer, findSourceMapURL } from 'private-next-rsc-action-client-wrapper'
+
+export const getUser =
+    createServerReference(
+        '...', // The calculated action id
+        callServer,
+        undefined,
+        findSourceMapURL,
+        'getUser'
+    )
+```
+
+`createServerReference` pretty much just returns a function that calls `callServer` with the action id and arguments.
+
+```ts
+export const getUser =
+    function(...args) {
+        return callServer('...', ...args) // The calculated action id
+    }
+```
+
+```ts
+// Next.js implementation
+// Each framework has it's own implementation of this
+// See `fetchServerAction` in Next.js codebase for full implementation
+export async function getUser(...args) {
+    const body = await encodeReply(args, { temporaryReferences })
+    const res = await fetch('', {
+        method: 'POST',
+        headers: {
+            Accept: 'text/x-component', // RSC_CONTENT_TYPE_HEADER
+            'Next-Action': actionId,
+            'Next-Router-State-Tree': encodeURIComponent(
+                JSON.stringify(state.tree)
+            ),
+            ...(process.env.NEXT_DEPLOYMENT_ID
+                ? {
+                    'x-deployment-id': process.env.NEXT_DEPLOYMENT_ID,
+                }
+                : {}),
+            ...(nextUrl
+                ? {
+                    'Next-Url': nextUrl,
+                }
+                : {}),
+        },
+        body,
+    })
+}
+```
