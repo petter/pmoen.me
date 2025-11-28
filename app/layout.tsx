@@ -1,16 +1,23 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Inter } from 'next/font/google';
+import { Cormorant_Garamond, Geist } from 'next/font/google';
 import classNames from 'classnames';
-import { Navigation } from './_navigation/navigation';
-import { Footer } from './_footer/footer';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
+});
 
 export const metadata = {
   title: 'Petter Moen',
-  description: "Petter Moen's blog.",
+  description: 'Software Engineer based in Toronto. Passionate about product development, frontend technology, and AI.',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
@@ -18,14 +25,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="en">
       <body
         className={classNames(
-          inter.className,
-          'flex min-h-screen w-full max-w-full flex-col bg-fuchsia-50',
-          '[--min-footer-height:19.125rem] [--min-nav-height:4rem]',
+          geist.variable,
+          cormorant.variable,
+          'font-sans antialiased',
         )}
       >
-        <Navigation />
-        <main className="w-full flex-1">{children}</main>
-        <Footer />
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>
