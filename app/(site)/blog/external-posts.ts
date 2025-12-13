@@ -105,4 +105,19 @@ export const externalPosts: Array<ExternalPost> = [
     imageUrl:
       'https://image-www.kode24.no/249772.webp?imageId=249772&x=0.00&y=37.12&cropw=100.00&croph=45.30&width=1972&height=1342&format=webp',
   },
+  {
+
+    slug: 'suspend-komponenter',
+    title: 'Hvordan lage komponenter som suspender?',
+    publishDate: '2025-12-08',
+    url: 'https://www.bekk.christmas/post/2025/08/suspend-komponenter',
+    imageUrl: 'https://cdn.sanity.io/images/ah2n1vfr/bekk-blogg-prod/0949ad15113e0fc68e0d568b6f6676e9088aa009-1440x1024.png?w=1700&q=80&auto=format',
+  },
+  {
+    slug: 'mitt-hobbyprosjekt-updated-email',
+    title: 'Mitt hobbyprosjekt: updated.email',
+    publishDate: '2025-12-13',
+    url: 'https://www.bekk.christmas/post/2025/13/hobbyprosjekt-updated-email',
+    imageUrl: 'https://cdn.sanity.io/images/ah2n1vfr/bekk-blogg-prod/ecb44c394f0c7a24fcadcd8e8603c5e701081559-1229x865.png?w=1700&q=80&auto=format',
+  },
 ];
