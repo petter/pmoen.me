@@ -26,7 +26,7 @@ async function CurrentlyWorkingOnContent() {
   if (!commit.isPublic) {
     return (
       <>
-        <span className="font-medium italic text-stone-300">
+        <span className="font-medium text-stone-300 italic">
           something secret
         </span>{' '}
         in a private repository
@@ -67,4 +67,3 @@ export function CurrentlyWorkingOn() {
     </div>
   );
 }
-

@@ -46,9 +46,9 @@ export async function getBlogPosts(): Promise<Array<Post>> {
   'use cache';
 
   // Retrieve slugs from post routes
-  const slugs = (await readdir('./app/(site)/blog', { withFileTypes: true })).filter(
-    (dirent) => dirent.isDirectory(),
-  );
+  const slugs = (
+    await readdir('./app/(site)/blog', { withFileTypes: true })
+  ).filter((dirent) => dirent.isDirectory());
 
   // Retrieve metadata from MDX files
   const localPosts = (
