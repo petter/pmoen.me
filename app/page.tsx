@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaBluesky, FaXTwitter } from 'react-icons/fa6';
 import { GrainOverlay } from '@/components/grain-overlay';
 import { CurrentlyWorkingOn } from './currently-working-on';
+import { Heading } from '@/components/typography/heading';
 
 export default function Home() {
   return (
@@ -11,9 +12,9 @@ export default function Home() {
       <main className="relative flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
         <div className="max-w-3xl">
           {/* Name */}
-          <h1 className="animate-fade-up font-serif text-4xl font-light tracking-tight text-stone-50 sm:text-5xl md:text-6xl">
+          <Heading level={1} className="md:text-6xl animate-fade-up">
             Petter Sæther Moen
-          </h1>
+          </Heading>
 
           {/* Tagline */}
           <p className="animate-fade-up animate-delay-100 mt-6 text-lg text-stone-400 md:text-xl">
