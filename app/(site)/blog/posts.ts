@@ -5,6 +5,7 @@ interface RawMetadata {
   publishDate?: string | Date;
   title: string;
   image: string;
+  language?: 'english' | 'norwegian';
 }
 
 export interface Post {
@@ -14,6 +15,7 @@ export interface Post {
   url: string;
   isExternal: boolean;
   imageUrl: string;
+  language: 'english' | 'norwegian';
 }
 
 function parsePublishDate(value?: string | Date): Date | null {
@@ -72,6 +74,7 @@ export async function getBlogPosts(): Promise<Array<Post>> {
           url: `/blog/${name}`,
           isExternal: false as boolean,
           imageUrl: metadata.image,
+          language: metadata.language ?? 'english',
         } satisfies Post;
       }),
     )
