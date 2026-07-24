@@ -12,7 +12,7 @@ export default function Home() {
       <main className="relative flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
         <div className="max-w-3xl">
           {/* Name */}
-          <Heading level={1} className="md:text-6xl animate-fade-up">
+          <Heading level={1} className="animate-fade-up md:text-6xl">
             Petter Sæther Moen
           </Heading>
 
