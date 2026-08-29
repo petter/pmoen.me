@@ -34,10 +34,10 @@ export default function ProductsPage() {
         </li>
         <li className="border-t border-stone-800">
           <ProductItem
-            href="https://kanban.pmoen.me"
-            name="Kanban Agent"
-            description="An AI-powered task management interface. Combines traditional Kanban workflows with intelligent agents that help organize, prioritize, and track your work."
-            techStack={['React', 'TypeScript', 'TailwindCSS', 'AI/ML']}
+            href="https://kanban-agent-interface-web.vercel.app"
+            name="Kanban Agent Interface"
+            description="A macOS desktop app that runs coding agents on a kanban board. Each card gets its own git worktree and branch, letting agents work in parallel. Supports any ACP agent — Claude, Gemini, Codex, Cursor, Copilot."
+            techStack={['Electron', 'React', 'TypeScript', 'Vite', 'ACP']}
           />
         </li>
       </ul>
