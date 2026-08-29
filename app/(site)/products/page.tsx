@@ -32,6 +32,14 @@ export default function ProductsPage() {
             techStack={['Next.js', 'TailwindCSS', 'Shadcn', 'Convex', 'Resend']}
           />
         </li>
+        <li className="border-t border-stone-800">
+          <ProductItem
+            href="https://kanban-agent-interface-web.vercel.app"
+            name="Kanban Agent Interface"
+            description="A macOS desktop app that runs coding agents on a kanban board. Each card gets its own git worktree and branch, letting agents work in parallel. Supports any ACP agent — Claude, Gemini, Codex, Cursor, Copilot."
+            techStack={['Electron', 'React', 'TypeScript', 'Vite', 'ACP']}
+          />
+        </li>
       </ul>
     </div>
   );
