@@ -32,6 +32,14 @@ export default function ProductsPage() {
             techStack={['Next.js', 'TailwindCSS', 'Shadcn', 'Convex', 'Resend']}
           />
         </li>
+        <li className="border-t border-stone-800">
+          <ProductItem
+            href="https://kanban.pmoen.me"
+            name="Kanban Agent"
+            description="An AI-powered task management interface. Combines traditional Kanban workflows with intelligent agents that help organize, prioritize, and track your work."
+            techStack={['React', 'TypeScript', 'TailwindCSS', 'AI/ML']}
+          />
+        </li>
       </ul>
     </div>
   );
