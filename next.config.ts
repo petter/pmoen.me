@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  pageExtensions: ['tsx', 'mdx'],
+  pageExtensions: ['ts', 'tsx', 'mdx'],
   reactCompiler: true,
   rewrites: async () => {
     return [{ source: '/drone', destination: '/drone/UserCertificate.pdf' }];
