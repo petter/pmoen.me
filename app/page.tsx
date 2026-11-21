@@ -1,115 +1,118 @@
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaBluesky, FaXTwitter } from 'react-icons/fa6';
-import { GrainOverlay } from '@/components/grain-overlay';
-import { CurrentlyWorkingOn } from './currently-working-on';
+import { AmbientBackdrop } from '@/components/ambient-backdrop';
+import { SocialLinks } from '@/components/social-links';
 import { Heading } from '@/components/typography/heading';
+import { CurrentlyWorkingOn } from './currently-working-on';
+
+const NAV_ITEMS = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/talks', label: 'Talks' },
+  { href: '/products', label: 'Products' },
+] as const;
 
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-stone-950 text-stone-100">
-      <GrainOverlay />
+      <AmbientBackdrop />
 
-      <main className="relative flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
-        <div className="max-w-3xl">
-          {/* Name */}
-          <Heading level={1} className="animate-fade-up md:text-6xl">
-            Petter Sæther Moen
-          </Heading>
+      <main className="relative z-10 mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center px-6 py-14 sm:px-8 md:py-20">
+        <div>
+          {/* Signature Pacifico Name + organic tapered calligraphic ink flourish */}
+          <div className="enter-up">
+            <Heading level={1} className="inline-block md:text-6xl">
+              <span className="relative inline-block pb-3">
+                Petter Sæther Moen
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 380 20"
+                  className="ink-reveal pointer-events-none absolute -right-2 -bottom-0.5 left-0 w-[calc(100%+0.5rem)] text-amber-300/80"
+                  fill="none"
+                >
+                  <path
+                    d="M3 14.5C58 9.2 132 5.8 214 6.4C276 6.8 332 9.4 374 12.2C376.5 12.4 377.4 13.7 375.3 14.3C333 11.4 277 9.4 214 9.1C134 8.7 61 11.6 5.5 16.4C2.4 16.7 1.1 14.8 3 14.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </Heading>
+          </div>
 
-          {/* Tagline */}
-          <p className="animate-fade-up animate-delay-100 mt-6 text-lg text-stone-400 md:text-xl">
+          {/* Role */}
+          <p
+            className="enter-up mt-4 text-lg text-stone-300 md:text-xl"
+            style={{ animationDelay: '70ms' }}
+          >
             Software Engineer
           </p>
 
-          {/* Currently working on */}
+          {/* Live GitHub activity */}
           <CurrentlyWorkingOn />
 
-          {/* Bio */}
-          <div className="animate-fade-up animate-delay-300 mt-10 max-w-xl space-y-4 text-stone-400">
-            <p>M.Sc. from University of Oslo. Based in Toronto, Canada.</p>
+          {/* Bio — consistent contrast & non-breaking Toronto, Canada */}
+          <div
+            className="enter-up mt-8 max-w-[58ch] space-y-3.5 text-[15px] leading-relaxed text-stone-300 sm:text-base"
+            style={{ animationDelay: '210ms' }}
+          >
+            <p>
+              M.Sc. from University of Oslo. Based in{' '}
+              <span className="text-stone-100">Toronto,&nbsp;Canada</span>.
+            </p>
             <p>
               Passionate about product development, frontend technology, and AI.
             </p>
           </div>
 
           {/* Navigation */}
-          <nav className="animate-fade-up animate-delay-400ms] mt-16">
-            <ul className="flex flex-wrap gap-x-8 gap-y-4 text-sm tracking-wide uppercase">
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-stone-400 transition-colors duration-200 hover:text-stone-50"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/talks"
-                  className="text-stone-400 transition-colors duration-200 hover:text-stone-50"
-                >
-                  Talks
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-stone-400 transition-colors duration-200 hover:text-stone-50"
-                >
-                  Products
-                </Link>
-              </li>
+          <nav
+            aria-label="Primary"
+            className="enter-up mt-10 border-t border-stone-800/80 pt-6"
+            style={{ animationDelay: '280ms' }}
+          >
+            <ul className="flex flex-wrap items-center gap-x-7 gap-y-2 text-sm tracking-wide uppercase sm:gap-x-9">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="group relative inline-flex min-h-11 items-baseline py-2 text-stone-200 transition-colors duration-200 hover:text-stone-50"
+                  >
+                    <span className="relative">
+                      {item.label}
+                      <span
+                        aria-hidden="true"
+                        className="absolute -bottom-1 left-0 w-full origin-left scale-x-0 border-b-2 border-amber-300/85 transition-transform duration-300 ease-out group-hover:scale-x-100 forced-colors:border-[CanvasText]"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              ))}
               <li>
                 <a
                   href="https://cv.pmoen.me"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-stone-400 transition-colors duration-200 hover:text-stone-50"
+                  className="group relative inline-flex min-h-11 items-baseline gap-1 py-2 text-stone-200 transition-colors duration-200 hover:text-stone-50"
                 >
-                  CV
+                  <span className="relative">
+                    CV
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 left-0 w-full origin-left scale-x-0 border-b-2 border-amber-300/85 transition-transform duration-300 ease-out group-hover:scale-x-100 forced-colors:border-[CanvasText]"
+                    />
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="text-xs text-stone-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-amber-300"
+                  >
+                    ↗
+                  </span>
                 </a>
               </li>
             </ul>
           </nav>
 
-          {/* Social links */}
-          <div className="animate-fade-up animate-delay-500 mt-16 flex gap-6">
-            <a
-              href="https://github.com/petter"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              aria-label="GitHub"
-            >
-              <FaGithub size={20} />
-            </a>
-            <a
-              href="https://bsky.app/profile/pmoen.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              aria-label="Bluesky"
-            >
-              <FaBluesky size={20} />
-            </a>
-            <a
-              href="https://x.com/pettersmoen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              aria-label="X (Twitter)"
-            >
-              <FaXTwitter size={20} />
-            </a>
-            <a
-              href="https://linkedin.com/in/pettersmoen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-500 transition-colors duration-200 hover:text-stone-50"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={20} />
-            </a>
+          {/* Clean borderless social icon row optically aligned to left edge */}
+          <div className="enter-up mt-4" style={{ animationDelay: '350ms' }}>
+            <SocialLinks className="-ml-3" iconClassName="h-[19px] w-[19px]" />
           </div>
         </div>
       </main>
