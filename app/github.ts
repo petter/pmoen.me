@@ -1,20 +1,24 @@
 import { cacheLife } from 'next/cache';
 import { z } from 'zod';
 
+const NonEmptyStringSchema = z.string().trim().min(1);
+
+const ValidTimestampSchema = z.iso.datetime();
+
 const GitHubPushEventSchema = z.object({
   id: z.string(),
   type: z.literal('PushEvent'),
   public: z.boolean(),
-  created_at: z.string(),
+  created_at: ValidTimestampSchema,
   repo: z.object({
-    name: z.string(),
+    name: NonEmptyStringSchema,
   }),
   payload: z.object({
-    head: z.string(),
+    head: NonEmptyStringSchema,
     commits: z
       .array(
         z.object({
-          sha: z.string(),
+          sha: NonEmptyStringSchema,
           message: z.string(),
         }),
       )
@@ -24,7 +28,7 @@ const GitHubPushEventSchema = z.object({
 });
 
 const GitHubCommitSchema = z.object({
-  sha: z.string(),
+  sha: NonEmptyStringSchema,
   commit: z.object({
     message: z.string(),
   }),
@@ -32,6 +36,7 @@ const GitHubCommitSchema = z.object({
 
 export interface LatestCommit {
   message: string;
+  shortSha: string;
   repoName: string;
   repoUrl: string;
   commitUrl: string;
@@ -72,7 +77,7 @@ export async function getLatestCommit(): Promise<LatestCommit | null> {
 
     const rawEvents = (await response.json()) as unknown[];
 
-    // Find the first PushEvent
+    // Find the first valid PushEvent
     let parsed = null;
     for (const event of rawEvents) {
       if (
@@ -118,21 +123,33 @@ export async function getLatestCommit(): Promise<LatestCommit | null> {
         return null;
       }
 
-      const commitData = GitHubCommitSchema.parse(await commitResponse.json());
-      commitMessage = commitData.commit.message;
-      commitSha = commitData.sha;
+      const commitParsed = GitHubCommitSchema.safeParse(
+        await commitResponse.json(),
+      );
+      if (!commitParsed.success) {
+        return null;
+      }
+      commitMessage = commitParsed.data.commit.message;
+      commitSha = commitParsed.data.sha;
+    }
+
+    const timestamp = new Date(parsed.created_at);
+    if (Number.isNaN(timestamp.getTime())) {
+      return null;
     }
 
     // Get the first line of the commit message (title)
-    const commitTitle = commitMessage.split('\n')[0];
+    const commitTitle =
+      commitMessage.split('\n')[0].trim() || commitSha.slice(0, 7);
 
     return {
       message: commitTitle,
+      shortSha: commitSha.slice(0, 7),
       repoName: parsed.repo.name,
       repoUrl: `https://github.com/${parsed.repo.name}`,
       commitUrl: `https://github.com/${parsed.repo.name}/commit/${commitSha}`,
       isPublic: parsed.public,
-      timestamp: new Date(parsed.created_at),
+      timestamp,
     };
   } catch (error) {
     console.error('Failed to fetch GitHub events:', error);

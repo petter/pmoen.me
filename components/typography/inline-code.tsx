@@ -10,7 +10,7 @@ export const InlineCode = forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'rounded-md bg-fuchsia-200 px-2 py-1 text-fuchsia-900',
+        'rounded-md border border-stone-800 bg-stone-900 px-1.5 py-0.5 font-mono text-sm text-amber-200',
         className,
       )}
     />

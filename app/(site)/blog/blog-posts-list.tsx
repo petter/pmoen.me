@@ -20,9 +20,10 @@ export function BlogPostsList({ posts }: Props) {
       {filteredPosts.map((post, index) => (
         <li
           key={post.slug}
-          className={index > 0 ? 'border-t border-stone-800' : ''}
+          className={`enter-up ${index > 0 ? 'border-t border-stone-800/90' : ''}`}
+          style={{ animationDelay: `${Math.min(index, 8) * 45 + 90}ms` }}
         >
-          <PostPreview post={post} />
+          <PostPreview post={post} hideEnglishBadge={englishOnly} />
         </li>
       ))}
     </ul>
