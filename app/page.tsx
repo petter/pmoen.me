@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { AmbientBackdrop } from '@/components/ambient-backdrop';
-import { RouteBadge } from '@/components/route-badge';
 import { SocialLinks } from '@/components/social-links';
 import { Heading } from '@/components/typography/heading';
 import { CurrentlyWorkingOn } from './currently-working-on';
@@ -38,16 +37,13 @@ export default function Home() {
             </Heading>
           </div>
 
-          {/* Role + playful Oslo -> Toronto flight micro-badge */}
-          <div
-            className="enter-up mt-4 flex flex-wrap items-center gap-x-4 gap-y-2.5"
+          {/* Role */}
+          <p
+            className="enter-up mt-4 text-lg text-stone-300 md:text-xl"
             style={{ animationDelay: '70ms' }}
           >
-            <p className="text-lg text-stone-300 md:text-xl">
-              Software Engineer
-            </p>
-            <RouteBadge />
-          </div>
+            Software Engineer
+          </p>
 
           {/* Live GitHub activity */}
           <CurrentlyWorkingOn />
