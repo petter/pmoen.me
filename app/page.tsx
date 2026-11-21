@@ -3,6 +3,7 @@ import { AmbientBackdrop } from '@/components/ambient-backdrop';
 import { SocialLinks } from '@/components/social-links';
 import { Heading } from '@/components/typography/heading';
 import { CurrentlyWorkingOn } from './currently-working-on';
+import { MeetupInvite } from './meetup-invite';
 
 const NAV_ITEMS = [
   { href: '/blog', label: 'Blog' },
@@ -10,7 +11,7 @@ const NAV_ITEMS = [
   { href: '/products', label: 'Products' },
 ] as const;
 
-export default function Home() {
+export default function Home({ searchParams }: PageProps<'/'>) {
   return (
     <div className="relative flex min-h-screen flex-col bg-stone-950 text-stone-100">
       <AmbientBackdrop />
@@ -61,6 +62,9 @@ export default function Home() {
               Passionate about product development, frontend technology, and AI.
             </p>
           </div>
+
+          {/* Where I am + invite, personalized by visitor proximity */}
+          <MeetupInvite searchParams={searchParams} />
 
           {/* Navigation */}
           <nav
