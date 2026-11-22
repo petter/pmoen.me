@@ -8,7 +8,6 @@ const GitHubCommitSchema = z.object({
 
 export interface LatestCommit {
   message: string;
-  shortSha: string;
   repoName: string;
   repoUrl: string;
   commitUrl: string;
@@ -72,7 +71,6 @@ export async function getLatestCommit(): Promise<LatestCommit | null> {
 
     return {
       message: title ?? shortSha,
-      shortSha,
       repoName: ref.repoName,
       repoUrl: `https://github.com/${ref.repoName}`,
       commitUrl: `https://github.com/${ref.repoName}/commit/${ref.sha}`,

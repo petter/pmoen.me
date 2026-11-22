@@ -91,8 +91,7 @@ async function CurrentlyWorkingOnContent() {
             rel="noopener noreferrer"
             className="inline max-w-full rounded border border-stone-800 bg-stone-950/80 px-1.5 py-0.5 font-mono text-xs font-medium wrap-anywhere text-stone-200 transition-colors hover:border-amber-300/40 hover:text-stone-50"
           >
-            <span className="mr-1.5 text-amber-300/90">{commit.shortSha}</span>
-            <span>{commit.message}</span>
+            {commit.message}
           </a>{' '}
           in{' '}
           <ExternalLink href={commit.repoUrl}>{commit.repoName}</ExternalLink>
