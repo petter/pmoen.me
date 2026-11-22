@@ -110,9 +110,12 @@ export function CurrentlyWorkingOn() {
       className="enter-up mt-8 rounded-lg border border-stone-800/80 bg-stone-900/35 px-4 py-3"
       style={{ animationDelay: '140ms' }}
     >
-      <Suspense fallback={<ContentSkeleton />}>
-        <CurrentlyWorkingOnContent />
-      </Suspense>
+      {/* Reserve two lines so long commit messages don't shift layout on load */}
+      <div className="flex min-h-[2lh] flex-col justify-center text-sm leading-relaxed">
+        <Suspense fallback={<ContentSkeleton />}>
+          <CurrentlyWorkingOnContent />
+        </Suspense>
+      </div>
     </div>
   );
 }
