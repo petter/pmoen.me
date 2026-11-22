@@ -1,26 +1,43 @@
 import { cacheLife, cacheTag } from 'next/cache';
 import { z } from 'zod';
+import { englishCountryName, resolveCountryCode } from '@/lib/country';
 import type { MyLocation } from '@/lib/meetup';
 
 export const LOCATION_CACHE_TAG = 'location';
 const REDIS_KEY = 'pmoen:location';
 
-/** Payload posted by the iPhone Shortcut. */
-export const LocationUpdateSchema = z.object({
+const LocationFieldsSchema = z.object({
   city: z.string().trim().min(1).max(80),
   country: z.string().trim().min(1).max(80),
-  countryCode: z
-    .string()
-    .trim()
-    .length(2)
-    .transform((code) => code.toUpperCase()),
+  countryCode: z.string().length(2),
   // Shortcuts may send numbers as strings
   lat: z.coerce.number().min(-90).max(90),
   lon: z.coerce.number().min(-180).max(180),
   visible: z.boolean().optional().default(true),
 });
 
-const StoredLocationSchema = LocationUpdateSchema.extend({
+/**
+ * Payload posted by the iPhone Shortcut. `countryCode` is optional: when it
+ * is missing or empty it is derived from the country name.
+ */
+export const LocationUpdateSchema = LocationFieldsSchema.extend({
+  countryCode: z.string().optional(),
+}).transform((data, ctx) => {
+  const countryCode = resolveCountryCode(data.countryCode, data.country);
+  if (!countryCode) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['countryCode'],
+      message: `Unknown country "${data.country}"; send countryCode explicitly`,
+    });
+    return z.NEVER;
+  }
+  // Store the English name so the homepage copy is consistent
+  const country = englishCountryName(countryCode) ?? data.country;
+  return { ...data, country, countryCode };
+});
+
+const StoredLocationSchema = LocationFieldsSchema.extend({
   updatedAt: z.iso.datetime(),
 });
 
@@ -55,7 +72,7 @@ async function redis(command: string[]): Promise<unknown> {
 const roundCoord = (value: number) => Math.round(value * 10) / 10;
 
 export async function saveLocation(
-  update: z.infer<typeof LocationUpdateSchema>,
+  update: z.output<typeof LocationUpdateSchema>,
 ): Promise<StoredLocation> {
   const stored: StoredLocation = {
     ...update,
