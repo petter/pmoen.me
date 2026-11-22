@@ -25,7 +25,7 @@ Update the location from an iPhone Shortcut:
 
 1. **Get Current Location**
 2. **Get Details of Locations** for City, Country, ISO Country Code, Latitude, Longitude
-3. **Get Contents of URL** `https://pmoen.me/api/location`
+3. **Get Contents of URL** `https://www.pmoen.me/api/location`
    - Method `POST`, header `Authorization: Bearer <LOCATION_SECRET>`
    - Request body JSON: `city`, `country`, `countryCode`, `lat`, `lon` (optional `visible: false` to hide and show Toronto)
 
