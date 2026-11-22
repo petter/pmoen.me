@@ -7,7 +7,10 @@ import {
 } from '@/app/location';
 
 type AuthResult =
-  'ok' | 'secret-not-configured' | 'missing-header' | 'mismatch';
+  | 'ok'
+  | 'secret-not-configured'
+  | 'missing-header'
+  | 'mismatch';
 
 /** Structured log line; never includes the secret. */
 function log(

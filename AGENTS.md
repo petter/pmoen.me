@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-The site uses the Next.js App Router. The homepage lives at `app/page.tsx` with its own self-contained layout. Subpages (blog, talks, products) use the `app/(site)/` route group which provides shared navigation and styling. Shared UI components go in `components/`, static assets in `public/`, and MDX helpers in `mdx-components.tsx`. Root config files (`tsconfig.json`, `.oxlintrc.json`, `.prettierrc`) define build tooling.
+The site uses the Next.js App Router. The homepage lives at `app/page.tsx` with its own self-contained layout. Subpages (blog, talks, products) use the `app/(site)/` route group which provides shared navigation and styling. Shared UI components go in `components/`, static assets in `public/`, and MDX helpers in `mdx-components.tsx`. Root config files (`tsconfig.json`, `.oxlintrc.json`, `.oxfmtrc.json`, `lefthook.yml`) define build tooling.
 
 ## Build, Test, and Development Commands
 
@@ -10,7 +10,9 @@ The site uses the Next.js App Router. The homepage lives at `app/page.tsx` with 
 - `bun run build` — produce a production build and surface type and compile errors.
 - `bun run start` — serve the output of the last build locally.
 - `bun run lint` — run Oxlint with the project's React, Next.js, and TypeScript rules.
-- `bun run prettier:fix` — apply Prettier (with the Tailwind plugin) across the repo.
+- `bun run lint:fix` — Oxlint with autofix.
+- `bun run format` — apply oxfmt (incl. Tailwind class sorting) across the repo; `format:check` to verify.
+- Pre-commit hook (lefthook, installed via `prepare`) runs `oxlint --fix` + `oxfmt` on staged files and restages them. Skip with `LEFTHOOK=0`.
 
 ## Design System
 
@@ -52,7 +54,7 @@ A subtle grain overlay (`<GrainOverlay />` from `components/grain-overlay.tsx`) 
 
 ## Coding Style & Naming Conventions
 
-TypeScript runs in strict mode; prefer functional React components and Tailwind utility classes. Use PascalCase for components, camelCase for hooks/helpers, kebab-case for route folders, and internal imports with `@/`. Prettier (with the Tailwind plugin) owns formatting—run it instead of hand-tuning spacing, and rely on `tailwind-merge` when composing class lists.
+TypeScript runs in strict mode; prefer functional React components and Tailwind utility classes. Use PascalCase for components, camelCase for hooks/helpers, kebab-case for route folders, and internal imports with `@/`. oxfmt (with Tailwind class sorting) owns formatting—run it instead of hand-tuning spacing, and rely on `tailwind-merge` when composing class lists.
 
 ## Testing Guidelines
 
@@ -64,7 +66,7 @@ Commit messages stay short and imperative (for example, `use react compiler`). K
 
 ## Content & MDX Notes
 
-Blog and talk entries live under `app/(site)/blog` and `app/(site)/talks`. Copy an existing folder when adding content, update frontmatter, and keep package imports inside `mdx-components.tsx` to avoid bundling surprises. Run Prettier after editing MDX so heading anchors stay consistent.
+Blog and talk entries live under `app/(site)/blog` and `app/(site)/talks`. Copy an existing folder when adding content, update frontmatter, and keep package imports inside `mdx-components.tsx` to avoid bundling surprises. Run `bun run format` after editing MDX so heading anchors stay consistent.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
