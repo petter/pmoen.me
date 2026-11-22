@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react';
 import { headers } from 'next/headers';
+import { connection } from 'next/server';
 import { Suspense } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ExternalLink } from '@/components/typography/external-link';
@@ -57,6 +58,8 @@ async function InviteContent({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  // Per-request copy (visitor geo + current time): never prerender
+  await connection();
   const { geo } = await searchParams;
   const visitor = await getVisitor(typeof geo === 'string' ? geo : undefined);
   const me = resolveMyLocation(await getStoredLocation(), new Date());
