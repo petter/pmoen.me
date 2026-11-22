@@ -3,7 +3,7 @@
   "singleQuote": true,
   "jsxSingleQuote": false,
   "printWidth": 80,
-  "sortPackageJson": false,
+  "sortPackageJson": true,
   "sortTailwindcss": {},
   "ignorePatterns": ["node_modules", ".next", ".claude", "bun.lock"]
 }
