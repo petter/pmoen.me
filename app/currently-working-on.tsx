@@ -1,6 +1,7 @@
 import { formatDistanceToNow } from 'date-fns';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
+import { ExternalLink } from '@/components/typography/external-link';
 import { getLatestCommit } from './github';
 
 function StatusDot({ live }: { live: boolean }) {
@@ -94,17 +95,7 @@ async function CurrentlyWorkingOnContent() {
             <span>{commit.message}</span>
           </a>{' '}
           in{' '}
-          <a
-            href={commit.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium wrap-anywhere text-stone-200 underline decoration-stone-700 underline-offset-4 transition-colors hover:text-stone-50 hover:decoration-amber-300/60"
-          >
-            {commit.repoName}
-            <span aria-hidden="true" className="ml-0.5 text-stone-400">
-              ↗
-            </span>
-          </a>
+          <ExternalLink href={commit.repoUrl}>{commit.repoName}</ExternalLink>
         </p>
         <span className="shrink-0 font-mono text-xs text-stone-400 tabular-nums">
           {timeAgo}
@@ -117,7 +108,7 @@ async function CurrentlyWorkingOnContent() {
 export function CurrentlyWorkingOn() {
   return (
     <div
-      className="enter-up mt-8 rounded-lg border border-stone-800/80 bg-stone-900/35 px-4 py-3 transition-colors duration-300 hover:border-stone-700/80"
+      className="enter-up mt-8 rounded-lg border border-stone-800/80 bg-stone-900/35 px-4 py-3"
       style={{ animationDelay: '140ms' }}
     >
       <Suspense fallback={<ContentSkeleton />}>
